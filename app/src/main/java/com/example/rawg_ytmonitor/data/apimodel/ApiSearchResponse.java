@@ -2,6 +2,9 @@ package com.example.rawg_ytmonitor.data.apimodel;
 
 import java.util.List;
 
+import lombok.Data;
+
+@Data
 public class ApiSearchResponse {
     List<Game> gameList;
 
