@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">rawg_ytmonitor</string>
+    <string name="game_thumbnail">Game thumbnail</string>
+    <string name="game_add">Add game button</string>
+    <string name="game_remove">Remove game button</string>
+
+    <!-- Bottom navigation bar -->
+    <string name="videos">Vidéos</string>
+    <string name="favorites">Favoris</string>
+    <string name="search">Recherche</string>
 </resources>
