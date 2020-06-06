@@ -53,4 +53,6 @@ dependencies {
 
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
     implementation group: 'com.jakewharton', name: 'butterknife', version: '10.2.1'
+
+    implementation 'com.eightbitlab:bottomnavigationbar:0.9.6'
 }
