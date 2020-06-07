@@ -67,7 +67,6 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
                 .load(game.getImageUrl())
                 .centerCrop()
                 .transition(DrawableTransitionOptions.withCrossFade())
-                .circleCrop()
                 .into(imageView);
     }
 

@@ -107,6 +107,7 @@ public class SearchFragment extends Fragment implements ISearchView {
 
     @Override
     public void displayGames(ApiSearchResponse apiSearchResponse) {
+        progressBar.setVisibility(View.GONE);
         gameAdapter.bindViewModels(apiSearchResponse.getGameList());
     }
 }
