@@ -10,11 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rawg_ytmonitor.R;
 import com.example.rawg_ytmonitor.data.apimodel.ApiSearchResponse;
 import com.example.rawg_ytmonitor.data.apimodel.Game;
 import com.example.rawg_ytmonitor.data.di.FakeDependencyInjection;
+import com.example.rawg_ytmonitor.search.adapter.GameAdapter;
 import com.example.rawg_ytmonitor.search.presenter.ISearchPresenter;
 import com.example.rawg_ytmonitor.search.presenter.SearchPresenter;
 
@@ -24,11 +28,15 @@ import java.util.TimerTask;
 public class SearchFragment extends Fragment implements ISearchView {
     private View rootView;
     private SearchView searchView;
+    private RecyclerView recyclerView;
+    private GameAdapter gameAdapter;
     private ProgressBar progressBar;
     private SearchView.OnQueryTextListener queryListener;
     private String query = "";
+    private boolean listDisplay = true;
     private ISearchPresenter presenter;
     FakeDependencyInjection fake = new FakeDependencyInjection();
+    private RecyclerView.LayoutManager layoutManager;
 
     public SearchFragment() {
     }
@@ -50,6 +58,7 @@ public class SearchFragment extends Fragment implements ISearchView {
         super.onActivityCreated(savedInstanceState);
         presenter = new SearchPresenter(this, FakeDependencyInjection.getGameDisplayRepository());
         setupSearchView();
+        setupRecyclerView();
     }
 
     private void setupSearchView() {
@@ -90,6 +99,20 @@ public class SearchFragment extends Fragment implements ISearchView {
             }
         };
         searchView.setOnQueryTextListener(queryListener);
+    }
+
+    private void setupRecyclerView() {
+        this.recyclerView = rootView.findViewById(R.id.game_list);
+        this.layoutManager = new LinearLayoutManager(getContext());
+        this.gameAdapter = new GameAdapter(this);
+
+        if(this.listDisplay){
+            this.recyclerView.setLayoutManager(this.layoutManager);
+        }else{
+            this.recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        }
+
+        this.recyclerView.setAdapter(this.gameAdapter);
     }
 
     @Override
