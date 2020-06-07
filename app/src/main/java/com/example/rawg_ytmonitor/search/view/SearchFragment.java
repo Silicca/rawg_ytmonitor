@@ -33,9 +33,7 @@ public class SearchFragment extends Fragment implements ISearchView {
     private ProgressBar progressBar;
     private SearchView.OnQueryTextListener queryListener;
     private String query = "";
-    private boolean listDisplay = true;
     private ISearchPresenter presenter;
-    FakeDependencyInjection fake = new FakeDependencyInjection();
     private RecyclerView.LayoutManager layoutManager;
 
     public SearchFragment() {
@@ -111,8 +109,6 @@ public class SearchFragment extends Fragment implements ISearchView {
 
     @Override
     public void displayGames(ApiSearchResponse apiSearchResponse) {
-        for (Game game: apiSearchResponse.getGameList()) {
-
-        }
+        gameAdapter.bindViewModels(apiSearchResponse.getGameList());
     }
 }

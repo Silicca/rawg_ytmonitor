@@ -36,8 +36,8 @@ public class GameAdapter extends RecyclerView.Adapter<GameViewHolder>{
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_game, parent, false);
-        GameViewHolder animeViewHolder = new GameViewHolder(v, iSearchView);
-        return animeViewHolder;
+        GameViewHolder gameViewHolder = new GameViewHolder(v, iSearchView);
+        return gameViewHolder;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
