@@ -13,6 +13,7 @@ import com.example.rawg_ytmonitor.data.repository.GameDisplayRemoteDataSource;
 import com.example.rawg_ytmonitor.data.repository.GameDisplayRepository;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -79,7 +80,9 @@ public class FakeDependencyInjection {
 
     public static Gson getGson() {
         if (gson == null) {
-            gson = new Gson();
+            gson = new GsonBuilder()
+                    .excludeFieldsWithoutExposeAnnotation()
+                    .create();
         }
         return gson;
     }

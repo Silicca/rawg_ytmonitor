@@ -1,5 +1,7 @@
 package com.example.rawg_ytmonitor.data.repository;
 
+import android.util.Log;
+
 import com.example.rawg_ytmonitor.data.apimodel.ApiSearchResponse;
 import com.example.rawg_ytmonitor.data.apimodel.Game;
 

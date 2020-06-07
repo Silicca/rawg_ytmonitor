@@ -21,9 +21,9 @@ public interface GameDao {
     @Insert
     public Completable addToFavorites(Game game);
 
-    @Query("DELETE FROM Game WHERE game_id = :id")
+    @Query("DELETE FROM Game WHERE id = :id")
     public Completable deleteFromFavorites(String id);
 
-    @Query("SELECT game_id from Game WHERE favorite = 'true'")
+    @Query("SELECT id from Game WHERE favorite = 'true'")
     Single<List<String>> getFavoriteIdList();
 }

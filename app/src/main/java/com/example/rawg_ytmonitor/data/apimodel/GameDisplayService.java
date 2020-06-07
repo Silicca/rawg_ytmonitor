@@ -5,8 +5,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface GameDisplayService {
-    @GET("games?search=")
-    Single<ApiSearchResponse> searchGames(@Query("q") String keywords);
+    @GET("games?")
+    Single<ApiSearchResponse> searchGames(@Query("search") String keywords);
 
 }
 
