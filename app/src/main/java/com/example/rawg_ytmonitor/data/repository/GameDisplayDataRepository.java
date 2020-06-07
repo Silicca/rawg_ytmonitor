@@ -10,13 +10,13 @@ import io.reactivex.Flowable;
 import io.reactivex.Single;
 import io.reactivex.functions.BiFunction;
 
-public class IGameDisplayDataRepository implements IGameDisplayRepository {
+public class GameDisplayDataRepository implements IGameDisplayRepository {
 
     private GameDisplayLocalDataSource gameDisplayLocalDataSource;
     private GameDisplayRemoteDataSource gameDisplayRemoteDataSource;
 
-    public IGameDisplayDataRepository(GameDisplayLocalDataSource gameDisplayLocalDataSource,
-                                      GameDisplayRemoteDataSource gameDisplayRemoteDataSource) {
+    public GameDisplayDataRepository(GameDisplayLocalDataSource gameDisplayLocalDataSource,
+                                     GameDisplayRemoteDataSource gameDisplayRemoteDataSource) {
         this.gameDisplayLocalDataSource = gameDisplayLocalDataSource;
         this.gameDisplayRemoteDataSource = gameDisplayRemoteDataSource;
     }

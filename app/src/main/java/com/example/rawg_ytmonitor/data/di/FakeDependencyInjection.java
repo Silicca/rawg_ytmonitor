@@ -7,7 +7,7 @@ import androidx.room.Room;
 
 import com.example.rawg_ytmonitor.data.apimodel.IGameDisplayService;
 import com.example.rawg_ytmonitor.data.db.GameDatabase;
-import com.example.rawg_ytmonitor.data.repository.IGameDisplayDataRepository;
+import com.example.rawg_ytmonitor.data.repository.GameDisplayDataRepository;
 import com.example.rawg_ytmonitor.data.repository.GameDisplayLocalDataSource;
 import com.example.rawg_ytmonitor.data.repository.GameDisplayRemoteDataSource;
 import com.example.rawg_ytmonitor.data.repository.IGameDisplayRepository;
@@ -40,7 +40,7 @@ public class FakeDependencyInjection {
 
     public static IGameDisplayRepository getIGameDisplayRepository() {
         if (IGameDisplayRepository == null) {
-            IGameDisplayRepository = new IGameDisplayDataRepository(
+            IGameDisplayRepository = new GameDisplayDataRepository(
                     new GameDisplayLocalDataSource(getGameDatabase()),
                     new GameDisplayRemoteDataSource(getIGameDisplayService())
             );
