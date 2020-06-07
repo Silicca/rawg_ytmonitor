@@ -105,13 +105,7 @@ public class SearchFragment extends Fragment implements ISearchView {
         this.recyclerView = rootView.findViewById(R.id.game_list);
         this.layoutManager = new LinearLayoutManager(getContext());
         this.gameAdapter = new GameAdapter(this);
-
-        if(this.listDisplay){
-            this.recyclerView.setLayoutManager(this.layoutManager);
-        }else{
-            this.recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        }
-
+        this.recyclerView.setLayoutManager(this.layoutManager);
         this.recyclerView.setAdapter(this.gameAdapter);
     }
 
