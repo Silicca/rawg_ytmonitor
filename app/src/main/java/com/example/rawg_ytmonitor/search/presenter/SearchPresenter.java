@@ -3,7 +3,7 @@ package com.example.rawg_ytmonitor.search.presenter;
 import android.util.Log;
 
 import com.example.rawg_ytmonitor.data.apimodel.ApiSearchResponse;
-import com.example.rawg_ytmonitor.data.repository.GameDisplayRepository;
+import com.example.rawg_ytmonitor.data.repository.IGameDisplayRepository;
 import com.example.rawg_ytmonitor.search.view.ISearchView;
 
 import java.util.Objects;
@@ -15,10 +15,10 @@ import io.reactivex.schedulers.Schedulers;
 
 public class SearchPresenter implements ISearchPresenter {
     private ISearchView view;
-    private GameDisplayRepository repository;
+    private IGameDisplayRepository repository;
     private CompositeDisposable compositeDisposable;
 
-    public SearchPresenter(ISearchView view, GameDisplayRepository repository) {
+    public SearchPresenter(ISearchView view, IGameDisplayRepository repository) {
         this.view = view;
         this.repository = repository;
         this.compositeDisposable = new CompositeDisposable();

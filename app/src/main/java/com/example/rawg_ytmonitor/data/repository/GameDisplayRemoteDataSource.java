@@ -1,19 +1,19 @@
 package com.example.rawg_ytmonitor.data.repository;
 
 import com.example.rawg_ytmonitor.data.apimodel.ApiSearchResponse;
-import com.example.rawg_ytmonitor.data.apimodel.GameDisplayService;
+import com.example.rawg_ytmonitor.data.apimodel.IGameDisplayService;
 
 import io.reactivex.Single;
 
 public class GameDisplayRemoteDataSource {
 
-    private GameDisplayService gameDisplayService;
+    private IGameDisplayService IGameDisplayService;
 
-    public GameDisplayRemoteDataSource(GameDisplayService gameDisplayService) {
-        this.gameDisplayService = gameDisplayService;
+    public GameDisplayRemoteDataSource(IGameDisplayService IGameDisplayService) {
+        this.IGameDisplayService = IGameDisplayService;
     }
 
     public Single<ApiSearchResponse> getApiSearchResponse(String keywords) {
-        return gameDisplayService.searchGames(keywords);
+        return IGameDisplayService.searchGames(keywords);
     }
 }

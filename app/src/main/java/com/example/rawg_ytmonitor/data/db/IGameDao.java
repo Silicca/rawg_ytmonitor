@@ -13,7 +13,7 @@ import io.reactivex.Flowable;
 import io.reactivex.Single;
 
 @Dao
-public interface GameDao {
+public interface IGameDao {
 
     @Query("SELECT * from Game")
     Flowable<List<Game>> loadFavorites();

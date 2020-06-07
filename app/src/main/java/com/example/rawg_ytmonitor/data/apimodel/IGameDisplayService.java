@@ -4,7 +4,7 @@ import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface GameDisplayService {
+public interface IGameDisplayService {
     @GET("games?")
     Single<ApiSearchResponse> searchGames(@Query("search") String keywords);
 

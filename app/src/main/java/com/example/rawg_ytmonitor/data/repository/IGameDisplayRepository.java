@@ -9,7 +9,7 @@ import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 
-public interface GameDisplayRepository {
+public interface IGameDisplayRepository {
     Single<ApiSearchResponse> getApiSearchResponse(String keywords);
 
     Flowable<List<Game>> getFavorites();

@@ -27,7 +27,6 @@ public class GameAdapter extends RecyclerView.Adapter<GameViewHolder>{
     public void bindViewModels(List<Game> gamesList) {
         this.gamesList.clear();
         this.gamesList.addAll(gamesList);
-        //notifyDataSetChanged();
     }
 
     // Create new views (invoked by the layout manager)

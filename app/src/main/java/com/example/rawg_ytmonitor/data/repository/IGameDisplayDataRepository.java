@@ -1,7 +1,5 @@
 package com.example.rawg_ytmonitor.data.repository;
 
-import android.util.Log;
-
 import com.example.rawg_ytmonitor.data.apimodel.ApiSearchResponse;
 import com.example.rawg_ytmonitor.data.apimodel.Game;
 
@@ -12,12 +10,12 @@ import io.reactivex.Flowable;
 import io.reactivex.Single;
 import io.reactivex.functions.BiFunction;
 
-public class GameDisplayDataRepository implements GameDisplayRepository{
+public class IGameDisplayDataRepository implements IGameDisplayRepository {
 
     private GameDisplayLocalDataSource gameDisplayLocalDataSource;
     private GameDisplayRemoteDataSource gameDisplayRemoteDataSource;
 
-    public GameDisplayDataRepository(GameDisplayLocalDataSource gameDisplayLocalDataSource,
+    public IGameDisplayDataRepository(GameDisplayLocalDataSource gameDisplayLocalDataSource,
                                       GameDisplayRemoteDataSource gameDisplayRemoteDataSource) {
         this.gameDisplayLocalDataSource = gameDisplayLocalDataSource;
         this.gameDisplayRemoteDataSource = gameDisplayRemoteDataSource;

@@ -5,12 +5,12 @@ import android.util.Log;
 
 import androidx.room.Room;
 
-import com.example.rawg_ytmonitor.data.apimodel.GameDisplayService;
+import com.example.rawg_ytmonitor.data.apimodel.IGameDisplayService;
 import com.example.rawg_ytmonitor.data.db.GameDatabase;
-import com.example.rawg_ytmonitor.data.repository.GameDisplayDataRepository;
+import com.example.rawg_ytmonitor.data.repository.IGameDisplayDataRepository;
 import com.example.rawg_ytmonitor.data.repository.GameDisplayLocalDataSource;
 import com.example.rawg_ytmonitor.data.repository.GameDisplayRemoteDataSource;
-import com.example.rawg_ytmonitor.data.repository.GameDisplayRepository;
+import com.example.rawg_ytmonitor.data.repository.IGameDisplayRepository;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -20,8 +20,6 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import static androidx.room.Room.databaseBuilder;
 
 /**
  * Please never do that in a production app. Ever.
@@ -33,28 +31,28 @@ import static androidx.room.Room.databaseBuilder;
  */
 public class FakeDependencyInjection {
 
-    private static GameDisplayService gameDisplayService;
+    private static IGameDisplayService IGameDisplayService;
     private static Retrofit retrofit;
     private static Gson gson;
-    private static GameDisplayRepository gameDisplayRepository;
+    private static IGameDisplayRepository IGameDisplayRepository;
     private static GameDatabase gameDatabase;
     private static Context applicationContext;
 
-    public static GameDisplayRepository getGameDisplayRepository() {
-        if (gameDisplayRepository == null) {
-            gameDisplayRepository = new GameDisplayDataRepository(
+    public static IGameDisplayRepository getIGameDisplayRepository() {
+        if (IGameDisplayRepository == null) {
+            IGameDisplayRepository = new IGameDisplayDataRepository(
                     new GameDisplayLocalDataSource(getGameDatabase()),
-                    new GameDisplayRemoteDataSource(getGameDisplayService())
+                    new GameDisplayRemoteDataSource(getIGameDisplayService())
             );
         }
-        return gameDisplayRepository;
+        return IGameDisplayRepository;
     }
 
-    public static GameDisplayService getGameDisplayService() {
-        if (gameDisplayService == null) {
-            gameDisplayService = getRetrofit().create(GameDisplayService.class);
+    public static IGameDisplayService getIGameDisplayService() {
+        if (IGameDisplayService == null) {
+            IGameDisplayService = getRetrofit().create(IGameDisplayService.class);
         }
-        return gameDisplayService;
+        return IGameDisplayService;
     }
 
     public static Retrofit getRetrofit() {

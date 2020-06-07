@@ -10,13 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rawg_ytmonitor.R;
 import com.example.rawg_ytmonitor.data.apimodel.ApiSearchResponse;
-import com.example.rawg_ytmonitor.data.apimodel.Game;
 import com.example.rawg_ytmonitor.data.di.FakeDependencyInjection;
 import com.example.rawg_ytmonitor.search.adapter.GameAdapter;
 import com.example.rawg_ytmonitor.search.presenter.ISearchPresenter;
@@ -54,7 +52,7 @@ public class SearchFragment extends Fragment implements ISearchView {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        presenter = new SearchPresenter(this, FakeDependencyInjection.getGameDisplayRepository());
+        presenter = new SearchPresenter(this, FakeDependencyInjection.getIGameDisplayRepository());
         setupSearchView();
         setupRecyclerView();
     }

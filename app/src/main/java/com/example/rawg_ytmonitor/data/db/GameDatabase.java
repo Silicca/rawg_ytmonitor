@@ -7,5 +7,5 @@ import com.example.rawg_ytmonitor.data.apimodel.Game;
 
 @Database(entities = {Game.class} , version = 1, exportSchema = false)
 public abstract class GameDatabase extends RoomDatabase {
-    public abstract GameDao gameDao();
+    public abstract IGameDao gameDao();
 }
