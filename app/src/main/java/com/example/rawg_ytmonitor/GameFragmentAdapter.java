@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.rawg_ytmonitor.menu.fragment.MenuFragment;
-import com.example.rawg_ytmonitor.search.fragment.SearchFragment;
+import com.example.rawg_ytmonitor.search.view.SearchFragment;
 import com.example.rawg_ytmonitor.video.fragment.VideoFragment;
 
 public class GameFragmentAdapter extends FragmentPagerAdapter {

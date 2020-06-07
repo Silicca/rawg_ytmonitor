@@ -12,6 +12,8 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import com.example.rawg_ytmonitor.R;
+import com.example.rawg_ytmonitor.data.apimodel.ApiSearchResponse;
+import com.example.rawg_ytmonitor.data.apimodel.Game;
 import com.example.rawg_ytmonitor.data.di.FakeDependencyInjection;
 import com.example.rawg_ytmonitor.search.presenter.ISearchPresenter;
 import com.example.rawg_ytmonitor.search.presenter.SearchPresenter;
@@ -26,6 +28,7 @@ public class SearchFragment extends Fragment implements ISearchView {
     private SearchView.OnQueryTextListener queryListener;
     private String query = "";
     private ISearchPresenter presenter;
+    FakeDependencyInjection fake = new FakeDependencyInjection();
 
     public SearchFragment() {
     }
@@ -79,6 +82,7 @@ public class SearchFragment extends Fragment implements ISearchView {
                     timer.schedule(new TimerTask() {
                         @Override
                         public void run() {
+                            presenter.searchGame(query);
                         }
                     }, sleep);
                 }
@@ -86,5 +90,12 @@ public class SearchFragment extends Fragment implements ISearchView {
             }
         };
         searchView.setOnQueryTextListener(queryListener);
+    }
+
+    @Override
+    public void displayGames(ApiSearchResponse apiSearchResponse) {
+        for (Game game: apiSearchResponse.getGameList()) {
+
+        }
     }
 }
