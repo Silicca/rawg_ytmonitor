@@ -1,6 +1,7 @@
 package com.example.rawg_ytmonitor.data.repository;
 
 import com.example.rawg_ytmonitor.data.apimodel.ApiSearchResponse;
+import com.example.rawg_ytmonitor.data.apimodel.ApiVideoResponse;
 import com.example.rawg_ytmonitor.data.apimodel.Game;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface IGameDisplayRepository {
     Completable addToFavorites(String id);
 
     Completable removeFromFavorites(String id);
+
+    Single<ApiVideoResponse> getVideos(int gameId);
 }

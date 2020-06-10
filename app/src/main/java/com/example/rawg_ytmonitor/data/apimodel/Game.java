@@ -33,11 +33,6 @@ public class Game {
     @Expose
     private String note;
 
-    //youtube URL ID
-    @ColumnInfo(name = "external_id")
-    @Expose
-    private String externalId;
-
     //rawg game ID
     @SerializedName("id")
     @ColumnInfo(name = "game_id")

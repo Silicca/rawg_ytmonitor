@@ -13,8 +13,8 @@ public class GameDisplayLocalDataSource {
 
     private GameDatabase gameDatabase;
 
-    public GameDisplayLocalDataSource(GameDatabase animeDatabase) {
-        this.gameDatabase = animeDatabase;
+    public GameDisplayLocalDataSource(GameDatabase gameDatabase) {
+        this.gameDatabase = gameDatabase;
     }
 
     public Flowable<List<Game>> loadFavorites() {
