@@ -4,9 +4,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.rawg_ytmonitor.menu.fragment.MenuFragment;
+import com.example.rawg_ytmonitor.menu.view.MenuFragment;
 import com.example.rawg_ytmonitor.search.view.SearchFragment;
-import com.example.rawg_ytmonitor.video.fragment.VideoFragment;
+import com.example.rawg_ytmonitor.video.view.VideoFragment;
 
 public class GameFragmentAdapter extends FragmentPagerAdapter {
     private static int NUM_ITEMS = 3;
