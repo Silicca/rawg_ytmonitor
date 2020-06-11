@@ -15,11 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rawg_ytmonitor.R;
 import com.example.rawg_ytmonitor.data.apimodel.ApiSearchResponse;
+import com.example.rawg_ytmonitor.data.apimodel.Game;
 import com.example.rawg_ytmonitor.data.di.FakeDependencyInjection;
 import com.example.rawg_ytmonitor.search.adapter.GameAdapter;
 import com.example.rawg_ytmonitor.search.presenter.ISearchPresenter;
 import com.example.rawg_ytmonitor.search.presenter.SearchPresenter;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -33,6 +35,7 @@ public class SearchFragment extends Fragment implements ISearchView {
     private String query = "";
     private ISearchPresenter presenter;
     private RecyclerView.LayoutManager layoutManager;
+    private List<Game> games;
 
     public SearchFragment() {
     }
@@ -108,6 +111,22 @@ public class SearchFragment extends Fragment implements ISearchView {
     @Override
     public void displayGames(ApiSearchResponse apiSearchResponse) {
         progressBar.setVisibility(View.GONE);
-        gameAdapter.bindViewModels(apiSearchResponse.getGameList());
+        games = apiSearchResponse.getGameList();
+        gameAdapter.bindViewModels(games);
+    }
+
+    @Override
+    public void addToFavorites(Game game) {
+        presenter.addToFavorites(game);
+    }
+
+    @Override
+    public void removeFromFavorites(Game game) {
+        presenter.removeFromFavorites(game);
+    }
+
+    @Override
+    public void refresh(Game game) {
+        gameAdapter.bindViewModels(games);
     }
 }

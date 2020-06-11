@@ -41,6 +41,7 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 addButton.setVisibility(View.INVISIBLE);
                 removeButton.setVisibility(View.VISIBLE);
+                iSearchView.addToFavorites(game);
             }
         });
 
@@ -49,6 +50,7 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 removeButton.setVisibility(View.INVISIBLE);
                 addButton.setVisibility(View.VISIBLE);
+                iSearchView.removeFromFavorites(game);
             }
         });
 
