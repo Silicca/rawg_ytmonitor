@@ -1,5 +1,6 @@
 package com.example.rawg_ytmonitor;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -9,8 +10,6 @@ import com.example.rawg_ytmonitor.search.view.SearchFragment;
 import com.example.rawg_ytmonitor.video.view.VideoFragment;
 
 public class GameFragmentAdapter extends FragmentPagerAdapter {
-    private static int NUM_ITEMS = 3;
-    private static final int VIDEO_VIEW = 0;
     private static final int MENU_VIEW = 1;
     private static final int SEARCH_VIEW = 2;
     private VideoFragment videoFragment;
@@ -28,20 +27,19 @@ public class GameFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return NUM_ITEMS;
+        return 3;
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case VIDEO_VIEW:
-                return videoFragment;
             case MENU_VIEW:
                 return menuFragment;
             case SEARCH_VIEW:
                 return searchFragment;
             default:
-                return null;
+                return videoFragment;
         }
     }
 

@@ -6,7 +6,6 @@ import com.example.rawg_ytmonitor.data.db.GameDatabase;
 import java.util.List;
 
 import io.reactivex.Completable;
-import io.reactivex.Flowable;
 import io.reactivex.Single;
 
 public class GameDisplayLocalDataSource {
@@ -17,7 +16,7 @@ public class GameDisplayLocalDataSource {
         this.gameDatabase = gameDatabase;
     }
 
-    public Flowable<List<Game>> loadFavorites() {
+    public Single<List<Game>> loadFavorites() {
         return gameDatabase.gameDao().loadFavorites();
     }
 
@@ -25,12 +24,7 @@ public class GameDisplayLocalDataSource {
         return gameDatabase.gameDao().addToFavorites(game);
     }
 
-    public Completable deleteFromFavorites(String id) {
-        return gameDatabase.gameDao().deleteFromFavorites(id);
+    public Completable removeFromFavorites(int id) {
+        return gameDatabase.gameDao().removeFromFavorites(id);
     }
-
-    public Single<List<String>> getFavoriteIdList() {
-        return gameDatabase.gameDao().getFavoriteIdList();
-    }
-
 }

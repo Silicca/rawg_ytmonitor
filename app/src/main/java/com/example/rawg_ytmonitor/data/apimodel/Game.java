@@ -16,8 +16,8 @@ import lombok.Setter;
 @Setter
 public class Game {
     @NonNull
-    @PrimaryKey
-    private String id;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
 
     @Expose
     private String name;
