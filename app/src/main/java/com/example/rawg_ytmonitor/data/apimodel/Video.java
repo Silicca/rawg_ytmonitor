@@ -11,7 +11,7 @@ import lombok.Data;
 public class Video {
     @Expose
     @SerializedName("external_id")
-    int externalId;
+    String externalId;
 
     @Expose
     String name;
