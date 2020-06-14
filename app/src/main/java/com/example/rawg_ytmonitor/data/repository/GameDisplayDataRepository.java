@@ -32,6 +32,7 @@ public class GameDisplayDataRepository implements IGameDisplayRepository {
                                 if (game1.getGameId() == game.getGameId()) {
                                     game.setId(game1.getId());
                                     game.setFavorite(true);
+                                    break;
                                 }
                             }
                         }

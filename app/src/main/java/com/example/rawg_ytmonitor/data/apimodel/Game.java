@@ -1,6 +1,5 @@
 package com.example.rawg_ytmonitor.data.apimodel;
 
-import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -15,7 +14,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Game {
-    @NonNull
     @PrimaryKey(autoGenerate = true)
     private int id;
 
