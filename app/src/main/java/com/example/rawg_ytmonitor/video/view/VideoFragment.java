@@ -1,5 +1,7 @@
 package com.example.rawg_ytmonitor.video.view;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,19 +42,28 @@ public class VideoFragment extends Fragment implements IVideoView {
         rootView = inflater.inflate(R.layout.fragment_video_list, container, false);
         presenter = new VideoPresenter(this, FakeDependencyInjection.getIGameDisplayRepository());
         setUpRecyclerView();
-//        presenter.loadVideos();
+        presenter.loadVideos();
         return rootView;
     }
 
     private void setUpRecyclerView() {
         recyclerView = rootView.findViewById(R.id.video_list);
-        adapter = new VideoAdapter();
+        adapter = new VideoAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     @Override
     public void displayVideos(List<Video> videos) {
+        adapter.bindViewModels(videos);
+    }
 
+    @Override
+    public void openVideo(Intent appIntent, Intent webIntent) {
+        try {
+            startActivity(appIntent);
+        } catch (ActivityNotFoundException ex) {
+            startActivity(webIntent);
+        }
     }
 }

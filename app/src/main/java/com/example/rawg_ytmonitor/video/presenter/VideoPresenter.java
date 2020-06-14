@@ -13,7 +13,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
-import io.reactivex.subscribers.ResourceSubscriber;
 
 public class VideoPresenter implements IVideoPresenter {
 
@@ -33,13 +32,14 @@ public class VideoPresenter implements IVideoPresenter {
         compositeDisposable.add(repository.getFavorites()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new ResourceSubscriber<List<Game>>() {
+                .subscribeWith(new DisposableSingleObserver<List<Game>>() {
                     @Override
-                    public void onNext(List<Game> games) {
+                    public void onSuccess(List<Game> games) {
                         final List<Video> videoList = new ArrayList<>();
                         for (Game game: games) {
                             // for each gameId found we request their videos from the API
-                            compositeDisposable.add(repository.getVideos(game.getGameId())
+                            CompositeDisposable request = new CompositeDisposable();
+                            request.add(repository.getVideos(game.getGameId())
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribeWith(new DisposableSingleObserver<ApiVideoResponse>() {
@@ -47,9 +47,14 @@ public class VideoPresenter implements IVideoPresenter {
                                         public void onSuccess(ApiVideoResponse apiVideoResponse) {
                                             // add 5 videos to a global list
                                             // limit to 5 because API return 50 videos
-                                            for (int i = 0; i< 5 || i == apiVideoResponse.getCount(); i++ ) {
+                                            int i = 0;
+                                            while (i < 5 && i < apiVideoResponse.getCount()) {
                                                 videoList.add(apiVideoResponse.getVideoList().get(i));
+                                                i++;
                                             }
+
+                                            // send the result to the view to display
+                                            view.displayVideos(videoList);
                                         }
 
                                         @Override
@@ -58,18 +63,11 @@ public class VideoPresenter implements IVideoPresenter {
                                         }
                                     }));
                         }
-                        // send the result to the view to display
-                        view.displayVideos(videoList);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
 
-                    @Override
-                    public void onComplete() {
-                        //Do Nothing
                     }
                 }));
     }

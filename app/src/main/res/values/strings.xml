@@ -8,4 +8,9 @@
     <string name="videos">Vidéos</string>
     <string name="favorites">Favoris</string>
     <string name="search">Recherche</string>
+
+    <string name="empty_list">La liste est vide</string>
+    <string name="view_count">Nombre de vues : %1$d</string>
+    <string name="channel_name">Chaîne : %1$s</string>
+    <string name="video_name">Titre : %1$s</string>
 </resources>
