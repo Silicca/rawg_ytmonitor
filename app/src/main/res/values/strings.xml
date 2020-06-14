@@ -9,6 +9,7 @@
     <string name="favorites">Favoris</string>
     <string name="search">Recherche</string>
 
+    <string name="search_hint">Chercher des jeux...</string>
     <string name="empty_list">La liste est vide</string>
     <string name="view_count">Nombre de vues : %1$d</string>
     <string name="channel_name">Chaîne : %1$s</string>
