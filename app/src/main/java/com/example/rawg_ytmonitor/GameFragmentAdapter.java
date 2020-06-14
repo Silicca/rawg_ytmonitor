@@ -3,13 +3,13 @@ package com.example.rawg_ytmonitor;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.rawg_ytmonitor.menu.view.MenuFragment;
 import com.example.rawg_ytmonitor.search.view.SearchFragment;
 import com.example.rawg_ytmonitor.video.view.VideoFragment;
 
-public class GameFragmentAdapter extends FragmentPagerAdapter {
+public class GameFragmentAdapter extends FragmentStatePagerAdapter {
     private static final int MENU_VIEW = 1;
     private static final int SEARCH_VIEW = 2;
     private VideoFragment videoFragment;
@@ -48,5 +48,20 @@ public class GameFragmentAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return "Page " + position;
     }
+
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        if (object instanceof VideoFragment) {
+            videoFragment.refresh();
+        }
+        if (object instanceof MenuFragment) {
+            menuFragment.refresh();
+        }
+        if (object instanceof SearchFragment) {
+            searchFragment.refreshResult();
+        }
+        return super.getItemPosition(object);
+    }
+
 
 }

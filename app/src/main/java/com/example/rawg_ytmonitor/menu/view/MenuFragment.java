@@ -62,6 +62,10 @@ public class MenuFragment extends Fragment implements IMenuView {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
+    public void refresh() {
+        presenter.setUpGameList();
+    }
+
     @Override
     public void displayGameList(List<Game> games) {
         if (games.isEmpty()) {

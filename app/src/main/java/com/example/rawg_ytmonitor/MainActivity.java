@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 bottomNavigationBar.selectTab(position, true);
+                viewPager.getAdapter().notifyDataSetChanged();
             }
 
             @Override

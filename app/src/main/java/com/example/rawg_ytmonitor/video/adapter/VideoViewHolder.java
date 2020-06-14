@@ -3,6 +3,8 @@ package com.example.rawg_ytmonitor.video.adapter;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
+import android.os.Build;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -55,10 +57,18 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    void bind(Video video) {
+    void bind(Video video){
         Resources res = this.itemView.getContext().getResources();
         this.video = video;
-        this.videoTitle.setText(String.format(res.getString(R.string.video_name), video.getName()));
+        String myText;
+        if (Build.VERSION.SDK_INT >= 24) {
+            myText = Html.fromHtml(video.getName() , Html.FROM_HTML_MODE_LEGACY).toString();
+        }
+        else {
+            //Html.fromHtml(string) is deprecated as of API 24 (Android 7.0 Nougat)
+            myText = Html.fromHtml(video.getName()).toString();
+        }
+        this.videoTitle.setText(String.format(res.getString(R.string.video_name), myText));
         this.videoViewCount.setText((String.format(res.getString(R.string.view_count), video.getViewCount())));
         this.channelTitle.setText((String.format(res.getString(R.string.channel_name), video.getChannelTitle())));
         Glide.with(v)

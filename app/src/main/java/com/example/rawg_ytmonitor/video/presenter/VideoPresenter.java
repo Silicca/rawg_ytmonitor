@@ -63,6 +63,10 @@ public class VideoPresenter implements IVideoPresenter {
                                         }
                                     }));
                         }
+                        // show empty list
+                        if (games.isEmpty()) {
+                            view.displayVideos(videoList);
+                        }
                     }
 
                     @Override

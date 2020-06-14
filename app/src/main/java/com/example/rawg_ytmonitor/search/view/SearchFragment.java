@@ -108,6 +108,12 @@ public class SearchFragment extends Fragment implements ISearchView {
         this.recyclerView.setAdapter(this.gameAdapter);
     }
 
+    public void refreshResult(){
+        if (!query.isEmpty()) {
+            presenter.searchGame(query);
+        }
+    }
+
     @Override
     public void displayGames(ApiSearchResponse apiSearchResponse) {
         progressBar.setVisibility(View.GONE);

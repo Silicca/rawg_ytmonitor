@@ -53,6 +53,10 @@ public class VideoFragment extends Fragment implements IVideoView {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
+    public void refresh(){
+        presenter.loadVideos();
+    }
+
     @Override
     public void displayVideos(List<Video> videos) {
         adapter.bindViewModels(videos);
