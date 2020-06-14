@@ -6,6 +6,4 @@ public interface ISearchPresenter {
     void searchGame(String s);
     void addToFavorites(Game game);
     void removeFromFavorites(Game game);
-    void cancelSubscription();
-    void disposeView();
 }

@@ -86,14 +86,4 @@ public class SearchPresenter implements ISearchPresenter {
                     }
                 }));
     }
-
-    @Override
-    public void cancelSubscription() {
-        compositeDisposable.clear();
-    }
-
-    @Override
-    public void disposeView() {
-
-    }
 }
