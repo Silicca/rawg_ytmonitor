@@ -15,6 +15,11 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
+    compileOptions {
+        targetCompatibility = "8"
+        sourceCompatibility = "8"
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -58,6 +63,7 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:2.2.5"
     implementation "androidx.room:room-rxjava2:2.2.5"
 
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     implementation group: 'com.jakewharton', name: 'butterknife', version: '10.2.1'
 
     implementation 'com.eightbitlab:bottomnavigationbar:0.9.6'
