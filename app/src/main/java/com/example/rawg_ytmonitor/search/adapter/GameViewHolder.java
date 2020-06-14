@@ -1,5 +1,6 @@
 package com.example.rawg_ytmonitor.search.adapter;
 
+import android.content.res.Resources;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -55,9 +56,10 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
     }
 
     void bind(Game game) {
+        Resources res = this.itemView.getContext().getResources();
         this.game = game;
         nameTextView.setText(game.getName());
-        scoreTextView.setText((game.getNote()));
+        scoreTextView.setText(String.format(res.getString(R.string.game_rating), game.getNote()));
         if(game.isFavorite()){
             removeVisible();
         } else {

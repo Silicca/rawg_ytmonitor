@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- Use android:theme NOT style -->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:titleTextAppearance="@style/ToolbarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <view
         android:id="@+id/viewPager"
         class="androidx.viewpager.widget.ViewPager"
@@ -14,16 +26,18 @@
         android:background="#151515"
         app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.eightbitlab.bottomnavigationbar.BottomNavigationBar
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        app:activeTabColor="@color/colorSecondary"
-        app:inactiveTabColor="@color/bottomBarDefaultTextColor"
+        app:activeTabColor="@color/colorAccent"
+        app:inactiveTabColor="@color/colorTextEntry"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
