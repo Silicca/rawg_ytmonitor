@@ -46,7 +46,9 @@
                 android:id="@+id/video_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
                 android:fontFamily="@font/roboto_bold"
+                android:maxLines="3"
                 android:text="@string/video_name"
                 android:textColor="@color/colorAccent" />
 
