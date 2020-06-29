@@ -15,6 +15,11 @@ public class GameDisplayDataRepository implements IGameDisplayRepository {
     private GameDisplayLocalDataSource gameDisplayLocalDataSource;
     private GameDisplayRemoteDataSource gameDisplayRemoteDataSource;
 
+    /**
+     * Constructor
+     * @param gameDisplayLocalDataSource GameDisplayLocalDataSource Object, the local data source
+     * @param gameDisplayRemoteDataSource GameDisplayRemoteDataSource Object, the remote data source
+     */
     public GameDisplayDataRepository(GameDisplayLocalDataSource gameDisplayLocalDataSource,
                                      GameDisplayRemoteDataSource gameDisplayRemoteDataSource) {
         this.gameDisplayLocalDataSource = gameDisplayLocalDataSource;

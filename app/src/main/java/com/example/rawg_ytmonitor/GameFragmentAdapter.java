@@ -16,6 +16,10 @@ public class GameFragmentAdapter extends FragmentStatePagerAdapter {
     private MenuFragment menuFragment;
     private SearchFragment searchFragment;
 
+    /**
+     * Constructor
+     * @param fragmentManager the fragment manager
+     */
     public GameFragmentAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
 
@@ -62,6 +66,4 @@ public class GameFragmentAdapter extends FragmentStatePagerAdapter {
         }
         return super.getItemPosition(object);
     }
-
-
 }
