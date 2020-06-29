@@ -15,13 +15,16 @@ import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
-import static android.webkit.ConsoleMessage.MessageLevel.LOG;
-
 public class SearchPresenter implements ISearchPresenter {
     private ISearchView view;
     private IGameDisplayRepository repository;
     private CompositeDisposable compositeDisposable;
 
+    /**
+     * Constructor
+     * @param view the view of the list of searched games
+     * @param repository the GameDisplayRepository Object (context)
+     */
     public SearchPresenter(ISearchView view, IGameDisplayRepository repository) {
         this.view = view;
         this.repository = repository;

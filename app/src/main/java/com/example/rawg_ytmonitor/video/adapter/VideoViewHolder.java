@@ -42,6 +42,11 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.video_view_count)
     TextView videoViewCount;
 
+    /**
+     * Constructor
+     * @param v the main view
+     * @param iVideoView the video view
+     */
     public VideoViewHolder(View v, IVideoView iVideoView) {
         super(v);
         this.v = v;
@@ -50,6 +55,9 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
         setListener();
     }
 
+    /**
+     * Setup a listener for the opening of the videos on youtube
+     */
     private void setListener() {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +70,10 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
+    /**
+     * Bind a Video to the view with his title, count of view, channel name and picture
+     * @param video the Video
+     */
     void bind(Video video){
         Resources res = this.itemView.getContext().getResources();
         this.video = video;
@@ -87,10 +99,10 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
     }
 
     /**
-     * Recursive implementation, invokes itself for each factor of a thousand, increasing the class on each invokation.
+     * Recursive implementation, invokes itself for each factor of a thousand, increasing the class on each invokation
      * @param n the number to format
      * @param iteration in fact this is the class from the array c
-     * @return a String representing the number n formatted in a cool looking way.
+     * @return a String representing the number n formatted in a cool looking way
      */
     private static String abbreviationNumberFormat(double n, int iteration) {
         double d = ((long) n / 100) / 10.0;

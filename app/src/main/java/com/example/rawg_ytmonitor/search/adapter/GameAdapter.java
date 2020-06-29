@@ -18,12 +18,19 @@ public class GameAdapter extends RecyclerView.Adapter<GameViewHolder>{
     private List<Game> gamesList;
     private ISearchView iSearchView;
 
-    // Provide a suitable constructor (depends on the kind of dataset)
+    /**
+     * A suitable constructor (depends on the kind of dataset)
+     * @param iSearchView the search view
+     */
     public GameAdapter(ISearchView iSearchView) {
         gamesList = new ArrayList<>();
         this.iSearchView = iSearchView;
     }
 
+    /**
+     * Method for refresh the list of searched games
+     * @param gamesList the list of searched games
+     */
     public void bindViewModels(List<Game> gamesList) {
         this.gamesList.clear();
         this.gamesList.addAll(gamesList);

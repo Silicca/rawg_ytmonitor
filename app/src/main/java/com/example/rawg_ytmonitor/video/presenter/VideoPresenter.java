@@ -20,6 +20,11 @@ public class VideoPresenter implements IVideoPresenter {
     private IGameDisplayRepository repository;
     private CompositeDisposable compositeDisposable;
 
+    /**
+     * Constructor
+     * @param view the video view
+     * @param repository the GameDisplayRepository Object
+     */
     public VideoPresenter(IVideoView view, IGameDisplayRepository repository) {
         this.view = view;
         this.repository = repository;
@@ -52,7 +57,6 @@ public class VideoPresenter implements IVideoPresenter {
                                                 videoList.add(apiVideoResponse.getVideoList().get(i));
                                                 i++;
                                             }
-
                                             // send the result to the view to display
                                             view.displayVideos(videoList);
                                         }
@@ -71,7 +75,6 @@ public class VideoPresenter implements IVideoPresenter {
 
                     @Override
                     public void onError(Throwable e) {
-
                     }
                 }));
     }

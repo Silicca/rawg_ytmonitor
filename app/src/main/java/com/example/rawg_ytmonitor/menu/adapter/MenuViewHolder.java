@@ -34,6 +34,11 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.remove)
     ImageView removeButton;
 
+    /**
+     * Constructor
+     * @param view the main view
+     * @param menuView the view for the list of favorite games
+     */
     public MenuViewHolder(@NonNull View view, IMenuView menuView) {
         super(view);
         this.menuView = menuView;
@@ -42,6 +47,9 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
         setupListeners();
     }
 
+    /**
+     * Setup a listener on the remove from favorites button
+     */
     private void setupListeners() {
         this.removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +59,10 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
+    /**
+     * Bind a Game to the view with his name, score and picture
+     * @param game the Game
+     */
     void bind(Game game) {
         Resources res = this.itemView.getContext().getResources();
         this.game = game;
@@ -68,11 +80,17 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
                 .into(imageView);
     }
 
+    /**
+     * Replace the remove button by the add button
+     */
     void addVisible(){
         this.addButton.setVisibility(View.VISIBLE);
         this.removeButton.setVisibility(View.INVISIBLE);
     }
 
+    /**
+     * Replace the add button by the remove button
+     */
     void removeVisible(){
         this.removeButton.setVisibility(View.VISIBLE);
         this.addButton.setVisibility(View.INVISIBLE);

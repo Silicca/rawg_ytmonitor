@@ -19,6 +19,11 @@ public class MenuPresenter implements IMenuPresenter {
     private CompositeDisposable compositeDisposable;
     private IMenuView view;
 
+    /**
+     * Constructor
+     * @param view the view of the list of favorite games
+     * @param repository the GameDisplayRepository Object
+     */
     public MenuPresenter(IMenuView view, IGameDisplayRepository repository) {
         this.view = view;
         this.repository = repository;

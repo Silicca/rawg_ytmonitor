@@ -69,12 +69,16 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
 
     }
 
+    /**
+     * Bind a Game to the view with his name, score and picture
+     * @param game the Game
+     */
     void bind(Game game) {
         Resources res = this.itemView.getContext().getResources();
         this.game = game;
         nameTextView.setText(game.getName());
         scoreTextView.setText(String.format(res.getString(R.string.game_rating), game.getNote()));
-        if(game.isFavorite()){
+        if (game.isFavorite()) {
             removeVisible();
         } else {
             addVisible();
@@ -86,12 +90,18 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
                 .into(imageView);
     }
 
-    void addVisible(){
+    /**
+     * Replace the remove button by the add button
+     */
+    void addVisible() {
         addButton.setVisibility(View.VISIBLE);
         removeButton.setVisibility(View.INVISIBLE);
     }
 
-    void removeVisible(){
+    /**
+     * Replace the add button by the remove button
+     */
+    void removeVisible() {
         removeButton.setVisibility(View.VISIBLE);
         addButton.setVisibility(View.INVISIBLE);
     }
