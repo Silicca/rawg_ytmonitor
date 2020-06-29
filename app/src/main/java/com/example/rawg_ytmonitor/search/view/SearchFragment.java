@@ -37,10 +37,8 @@ public class SearchFragment extends Fragment implements ISearchView {
     private GameAdapter gameAdapter;
     @BindView(R.id.loading)
     ProgressBar progressBar;
-    private SearchView.OnQueryTextListener queryListener;
     private String query = "";
     private ISearchPresenter presenter;
-    private RecyclerView.LayoutManager layoutManager;
     private List<Game> games;
 
     public SearchFragment() {
@@ -71,8 +69,9 @@ public class SearchFragment extends Fragment implements ISearchView {
      */
     private void setupSearchView() {
         ButterKnife.bind(this, rootView);
-        this.queryListener = new SearchView.OnQueryTextListener() {
+        SearchView.OnQueryTextListener queryListener = new SearchView.OnQueryTextListener() {
             private Timer timer = new Timer();
+
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -113,9 +112,9 @@ public class SearchFragment extends Fragment implements ISearchView {
      */
     private void setupRecyclerView() {
         ButterKnife.bind(this, rootView);
-        this.layoutManager = new LinearLayoutManager(getContext());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         this.gameAdapter = new GameAdapter(this);
-        this.recyclerView.setLayoutManager(this.layoutManager);
+        this.recyclerView.setLayoutManager(layoutManager);
         this.recyclerView.setAdapter(this.gameAdapter);
     }
 

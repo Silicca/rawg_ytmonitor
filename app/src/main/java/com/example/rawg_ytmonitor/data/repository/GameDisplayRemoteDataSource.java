@@ -8,14 +8,14 @@ import io.reactivex.Single;
 
 public class GameDisplayRemoteDataSource {
 
-    private IGameDisplayService IGameDisplayService;
+    private IGameDisplayService iGameDisplayService;
 
     /**
      * Constructor
-     * @param IGameDisplayService Interface GameDisplayService
+     * @param iGameDisplayService Interface GameDisplayService
      */
-    public GameDisplayRemoteDataSource(IGameDisplayService IGameDisplayService) {
-        this.IGameDisplayService = IGameDisplayService;
+    public GameDisplayRemoteDataSource(IGameDisplayService iGameDisplayService) {
+        this.iGameDisplayService = iGameDisplayService;
     }
 
     /**
@@ -24,7 +24,7 @@ public class GameDisplayRemoteDataSource {
      * @return Single ApiSearchResponse object, the response of the rawg Api
      */
     public Single<ApiSearchResponse> getApiSearchResponse(String keywords) {
-        return IGameDisplayService.searchGames(keywords);
+        return iGameDisplayService.searchGames(keywords);
     }
 
     /**
@@ -33,6 +33,6 @@ public class GameDisplayRemoteDataSource {
      * @return Single ApiVideoResponse object, the response of the video Api
      */
     public Single<ApiVideoResponse> getApiVideoResponse(int gameId) {
-        return IGameDisplayService.searchVideo(gameId);
+        return iGameDisplayService.searchVideo(gameId);
     }
 }

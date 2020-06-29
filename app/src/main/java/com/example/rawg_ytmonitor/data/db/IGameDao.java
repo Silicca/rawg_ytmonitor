@@ -18,8 +18,8 @@ public interface IGameDao {
     Single<List<Game>> loadFavorites();
 
     @Insert
-    public Completable addToFavorites(Game game);
+    Completable addToFavorites(Game game);
 
     @Query("DELETE FROM Game WHERE id = :id")
-    public Completable removeFromFavorites(int id);
+    Completable removeFromFavorites(int id);
 }
