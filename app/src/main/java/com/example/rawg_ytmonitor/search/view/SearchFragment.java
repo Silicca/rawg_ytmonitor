@@ -25,12 +25,18 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class SearchFragment extends Fragment implements ISearchView {
     private View rootView;
-    private SearchView searchView;
-    private RecyclerView recyclerView;
+    @BindView(R.id.search_view)
+    SearchView searchView;
+    @BindView(R.id.game_list)
+    RecyclerView recyclerView;
     private GameAdapter gameAdapter;
-    private ProgressBar progressBar;
+    @BindView(R.id.loading)
+    ProgressBar progressBar;
     private SearchView.OnQueryTextListener queryListener;
     private String query = "";
     private ISearchPresenter presenter;
@@ -60,9 +66,11 @@ public class SearchFragment extends Fragment implements ISearchView {
         setupRecyclerView();
     }
 
+    /**
+     * Setup the search view (view for the list of searched games)
+     */
     private void setupSearchView() {
-        searchView = rootView.findViewById(R.id.search_view);
-        progressBar = rootView.findViewById(R.id.loading);
+        ButterKnife.bind(this, rootView);
         this.queryListener = new SearchView.OnQueryTextListener() {
             private Timer timer = new Timer();
             @Override
@@ -100,14 +108,20 @@ public class SearchFragment extends Fragment implements ISearchView {
         searchView.setOnQueryTextListener(queryListener);
     }
 
+    /**
+     * Setup the recycler view of the search view (view for the list of searched games)
+     */
     private void setupRecyclerView() {
-        this.recyclerView = rootView.findViewById(R.id.game_list);
+        ButterKnife.bind(this, rootView);
         this.layoutManager = new LinearLayoutManager(getContext());
         this.gameAdapter = new GameAdapter(this);
         this.recyclerView.setLayoutManager(this.layoutManager);
         this.recyclerView.setAdapter(this.gameAdapter);
     }
 
+    /**
+     * Refresh the list of searched games (presenter)
+     */
     public void refreshResult(){
         if (!query.isEmpty()) {
             presenter.searchGame(query);

@@ -22,11 +22,16 @@ import com.example.rawg_ytmonitor.menu.presenter.MenuPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MenuFragment extends Fragment implements IMenuView {
     private View rootView;
     private IMenuPresenter presenter;
-    private RecyclerView recyclerView;
-    private TextView errorMsg;
+    @BindView(R.id.game_list)
+    RecyclerView recyclerView;
+    @BindView(R.id.error_msg)
+    TextView errorMsg;
     private MenuAdapter adapter;
 
     private List<Game> games = new ArrayList<>();
@@ -51,17 +56,22 @@ public class MenuFragment extends Fragment implements IMenuView {
         super.onActivityCreated(savedInstanceState);
         presenter = new MenuPresenter(this, FakeDependencyInjection.getIGameDisplayRepository());
         presenter.setUpGameList();
-        errorMsg = rootView.findViewById(R.id.error_msg);
         setUpRecyclerView();
     }
 
+    /**
+     * Setup the recycler view of the menu view (view for the list of favorite games)
+     */
     private void setUpRecyclerView() {
-        recyclerView = rootView.findViewById(R.id.game_list);
+        ButterKnife.bind(this, rootView);
         adapter = new MenuAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
+    /**
+     * Refresh the list of favorite games (presenter)
+     */
     public void refresh() {
         presenter.setUpGameList();
     }

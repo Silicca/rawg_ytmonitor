@@ -22,10 +22,14 @@ import com.example.rawg_ytmonitor.video.presenter.VideoPresenter;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class VideoFragment extends Fragment implements IVideoView {
     private View rootView;
     private IVideoPresenter presenter;
-    private RecyclerView recyclerView;
+    @BindView(R.id.video_list)
+    RecyclerView recyclerView;
     private VideoAdapter adapter;
 
     public VideoFragment() {
@@ -46,13 +50,19 @@ public class VideoFragment extends Fragment implements IVideoView {
         return rootView;
     }
 
+    /**
+     * Setup the recycler view of the video view
+     */
     private void setUpRecyclerView() {
-        recyclerView = rootView.findViewById(R.id.video_list);
+        ButterKnife.bind(this, rootView);
         adapter = new VideoAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
+    /**
+     * Refresh the list of videos (presenter)
+     */
     public void refresh(){
         presenter.loadVideos();
     }

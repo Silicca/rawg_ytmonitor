@@ -10,10 +10,16 @@ import androidx.viewpager.widget.ViewPager;
 import com.eightbitlab.bottomnavigationbar.BottomBarItem;
 import com.eightbitlab.bottomnavigationbar.BottomNavigationBar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
+    @BindView(R.id.viewPager)
     ViewPager viewPager;
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.bottom_bar)
     BottomNavigationBar bottomNavigationBar;
 
     @Override
@@ -21,13 +27,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-        toolbar = findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        viewPager = findViewById(R.id.viewPager);
-        bottomNavigationBar = findViewById(R.id.bottom_bar);
         setUpView();
     }
 
+    /**
+     * Method for setup the main view with the bottomNavigationBar and his listeners, the different views corresponding to the selected tab of the bottomNavigationBar
+     */
     private void setUpView() {
         bottomNavigationBar.addTab(new BottomBarItem(R.drawable.ic_baseline_subscriptions_24, R.string.videos));
         bottomNavigationBar.addTab(new BottomBarItem(R.drawable.ic_menu_logo, R.string.favorites));
